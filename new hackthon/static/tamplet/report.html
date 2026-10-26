@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+<!-- Leaflet CSS & JS for Map -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow border-0">
+            <div class="card-body p-4">
+                <h3 class="card-title text-primary mb-3">📝 Report a Local Issue</h3>
+                <form method="POST" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Your Name (Optional)</label>
+                        <input type="text" class="form-control" name="name" placeholder="Enter your name">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Problem Category</label>
+                        <select class="form-select" name="category" required>
+                            <option value="Road Damage">Road Damage / Potholes</option>
+                            <option value="Water Leakage">Water Leakage / Pipe Burst</option>
+                            <option value="Garbage Overflow">Garbage Overflow</option>
+                            <option value="Broken Streetlight">Broken Streetlight</option>
+                            <option value="Drainage Problem">Drainage Problem</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Upload Photo Proof</label>
+                        <input type="file" class="form-control" name="photo" accept="image/*" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Select Location on Map or Type Landmark</label>
+                        <div id="map" style="height: 250px; border-radius: 8px;" class="mb-2"></div>
+                        <input type="text" class="form-control" id="location" name="location" placeholder="Click on map or type landmark e.g. Near Bus Stand" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Detailed Description</label>
+                        <textarea class="form-control" name="description" rows="4" placeholder="Describe the problem..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100 py-2 fw-bold shadow-sm">Submit Complaint & Run AI Analysis</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
